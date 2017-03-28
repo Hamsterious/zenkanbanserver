@@ -2,15 +2,22 @@
 var express = require('express');
 var router = express.Router();
 
-// DB
+// Schemas
 var mongoose = require('mongoose');
 var Board = require('../models/board.js');
 
-/* GET users listing. */
+//
 router.get('/boards', function(req, res, next) {
     Board.find(function(err, boards) {
         if (err) return next(err);
         res.json(boards);
+    });
+});
+
+router.post('/boards', function(req, res, next) {
+    Board.create(req.body, function(err, post) {
+        if (err) return next(err);
+        res.json(post);
     });
 });
 
