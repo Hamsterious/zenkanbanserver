@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var Board = require('../models/board.js');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/boards', function(req, res, next) {
     Board.find(function(err, boards) {
         if (err) return next(err);
         res.json(boards);
