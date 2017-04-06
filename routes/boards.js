@@ -6,6 +6,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Board = require('../models/board.js');
 
+// Routes
 // GET ALL
 router.get('/boards', function(req, res, next) {
     Board.find(function(err, boards) {

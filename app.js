@@ -5,8 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Routes - Custom
 var index = require('./routes/index');
 var boards = require('./routes/boards');
+var columns = require('./routes/columns');
 
 var app = express();
 
@@ -14,7 +16,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Enabling CORS
+// Enabling CORS - Custom
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -29,8 +31,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Use routes - Custom
 app.use('/', index);
 app.use('/', boards);
+app.use('/', columns);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,7 +56,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-// Mongoose setup + connection to MongoDB
+// Mongoose setup + connection to MongoDB - Custom
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/zenkanban-api')
