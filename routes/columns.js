@@ -17,20 +17,11 @@ router.get('/columns', function(req, res, next) {
 });
 
 // CREATE
-router.post('/columns/:boardId', function(req, res, next) {
-
-    // Find board column belongs to
-    Board.findById(req.params.boardId, function(err, board) {
+router.post('/columns', function(req, res, next) {
+    // Create the column
+    Column.create(req.body, function(err, post) {
         if (err) return next(err);
-
-        // Set the board id
-        req.body.boardId = board._id;
-
-        // Create the column
-        Column.create(req.body, function(err, post) {
-            if (err) return next(err);
-            res.json(post);
-        });
+        res.json(post);
     });
 });
 
