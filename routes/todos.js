@@ -4,7 +4,7 @@ var router = express.Router();
 
 // Schemas
 var mongoose = require('mongoose');
-var Todo = require('../models/column.js');
+var Todo = require('../models/todo.js');
 var Column = require('../models/column.js');
 
 // Routes
