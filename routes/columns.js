@@ -9,7 +9,7 @@ var Board = require('../models/board.js');
 
 // Routes
 // GET ALL
-router.get('/columns', function(req, res, next) {
+router.get('', function(req, res, next) {
     Column.find(function(err, columns) {
         if (err) return next(err);
         res.json(columns);
@@ -17,7 +17,7 @@ router.get('/columns', function(req, res, next) {
 });
 
 // CREATE
-router.post('/columns', function(req, res, next) {
+router.post('', function(req, res, next) {
     // Create the column
     Column.create(req.body, function(err, post) {
         if (err) return next(err);
@@ -26,7 +26,7 @@ router.post('/columns', function(req, res, next) {
 });
 
 // GET BY ID
-router.get('/columns/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
     Column.findById(req.params.id, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -34,7 +34,7 @@ router.get('/columns/:id', function(req, res, next) {
 });
 
 // GET ALL BY BOARD ID
-router.get('/columns/board/:id', function(req, res, next) {
+router.get('/board/:id', function(req, res, next) {
     Column.find({ 'boardId': req.params.id }, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -42,7 +42,7 @@ router.get('/columns/board/:id', function(req, res, next) {
 });
 
 // UPDATE
-router.post('/columns/:id', function(req, res, next) {
+router.post('/:id', function(req, res, next) {
     Column.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -50,7 +50,7 @@ router.post('/columns/:id', function(req, res, next) {
 });
 
 // DELETE
-router.post('/columns/delete/:id', function(req, res, next) {
+router.post('/delete/:id', function(req, res, next) {
     Column.findByIdAndRemove(req.params.id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);

@@ -9,7 +9,7 @@ var Column = require('../models/column.js');
 
 // Routes
 // GET ALL
-router.get('/todos', function(req, res, next) {
+router.get('', function(req, res, next) {
     Todo.find(function(err, todos) {
         if (err) return next(err);
         res.json(todos);
@@ -17,7 +17,7 @@ router.get('/todos', function(req, res, next) {
 });
 
 // CREATE
-router.post('/todos', function(req, res, next) {
+router.post('', function(req, res, next) {
     // Create the column
     Todo.create(req.body, function(err, post) {
         if (err) return next(err);
@@ -26,7 +26,7 @@ router.post('/todos', function(req, res, next) {
 });
 
 // GET BY ID
-router.get('/todos/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
     Todo.findById(req.params.id, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -34,7 +34,7 @@ router.get('/todos/:id', function(req, res, next) {
 });
 
 // GET ALL BY COLUMNS ID
-router.get('/todos/column/:id', function(req, res, next) {
+router.get('/column/:id', function(req, res, next) {
     Todo.find({ 'columnId': req.params.id }, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -42,7 +42,7 @@ router.get('/todos/column/:id', function(req, res, next) {
 });
 
 // UPDATE
-router.post('/todos/:id', function(req, res, next) {
+router.post('/:id', function(req, res, next) {
     Todo.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -50,7 +50,7 @@ router.post('/todos/:id', function(req, res, next) {
 });
 
 // DELETE
-router.post('/todos/delete/:id', function(req, res, next) {
+router.post('/delete/:id', function(req, res, next) {
     Todo.findByIdAndRemove(req.params.id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);

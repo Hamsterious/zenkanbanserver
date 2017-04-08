@@ -34,9 +34,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Use routes - Custom
 app.use('/', index);
-app.use('/', boards);
-app.use('/', columns);
-app.use('/', todos);
+app.use('/boards', boards);
+app.use('/columns', columns);
+app.use('/todos', todos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,7 +8,7 @@ var Board = require('../models/board.js');
 
 // Routes
 // GET ALL
-router.get('/boards', function(req, res, next) {
+router.get('', function(req, res, next) {
     Board.find(function(err, boards) {
         if (err) return next(err);
         res.json(boards);
@@ -16,7 +16,7 @@ router.get('/boards', function(req, res, next) {
 });
 
 // CREATE
-router.post('/boards', function(req, res, next) {
+router.post('', function(req, res, next) {
     Board.create(req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -24,7 +24,7 @@ router.post('/boards', function(req, res, next) {
 });
 
 // GET BY ID
-router.get('/boards/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
     Board.findById(req.params.id, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -32,7 +32,7 @@ router.get('/boards/:id', function(req, res, next) {
 });
 
 // UPDATE
-router.post('/boards/:id', function(req, res, next) {
+router.post('/:id', function(req, res, next) {
     Board.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -40,7 +40,7 @@ router.post('/boards/:id', function(req, res, next) {
 });
 
 // DELETE
-router.post('/boards/delete/:id', function(req, res, next) {
+router.post('/delete/:id', function(req, res, next) {
     Board.findByIdAndRemove(req.params.id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
