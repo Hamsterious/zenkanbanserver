@@ -5,7 +5,7 @@ var TodoSchema = new Schema({
     title: String,
     details: String,
     order: Number,
-    boardId: { type: Schema.Types.ObjectId, ref: 'Column' }
+    columnId: { type: Schema.Types.ObjectId, ref: 'Column' }
 });
 
 module.exports = mongoose.model('Todo', TodoSchema);
